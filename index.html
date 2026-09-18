@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Psychology</title>
+    <!-- Favicon Candy Psychology -->
+    <link rel="icon" type="image/png" href="https://freedev.app">
+    <link rel="shortcut icon" type="image/x-icon" href="https://freedev.app">
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #ffffff; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Iframe tempat Google Apps Script akan dimuat -->
+    <iframe id="app-frame" src="" sandbox="allow-top-navigation allow-scripts allow-forms allow-same-origin allow-popups allow-modals" allow="geolocation; microphone; camera;"></iframe>
+
+    <script>
+        // URL Google Apps Script Anda
+        const urlRegister = "https://script.google.com/macros/s/AKfycbxEmPLhSP2C1RBYjNorGbr4hoCz6YxWDGOIBm9-wLsKQAG_NfgZgMY28v_yUXRmbDlt/exec?page=register";
+        const urlLogin    = "https://script.google.com/macros/s/AKfycbxEmPLhSP2C1RBYjNorGbr4hoCz6YxWDGOIBm9-wLsKQAG_NfgZgMY28v_yUXRmbDlt/exec?page=login";
+
+        // Ambil path URL saat ini (misal: /login atau /)
+        const path = window.location.pathname;
+        const iframe = document.getElementById('app-frame');
+
+        // Logika Routing untuk menentukan halaman dan judul tab
+        if (path === "/login" || path === "/login/") {
+            iframe.src = urlLogin;
+            document.title = "Candy Psychology - Halaman Login";
+        } else {
+            // Default ke halaman registrasi jika diakses lewat domain utama (/)
+            iframe.src = urlRegister;
+            document.title = "Candy Psychology - Form Registrasi";
+        }
+    </script>
+</body>
+</html>
